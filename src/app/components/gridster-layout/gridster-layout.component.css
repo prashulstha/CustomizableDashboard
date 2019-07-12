@@ -1,0 +1,31 @@
+.toolbar {
+    display: flex;
+  }
+
+#gridster {
+    display: flex;
+    height: calc(100vh - 115px);
+    flex-direction: column;
+    background-color: whitesmoke;
+}
+
+.gridster-item{
+    display: flex;
+    justify-content: center;
+}
+
+#toggleButton{
+    cursor: hand;
+    float: right;
+    margin: 10px;
+    -webkit-transition: .4s;
+    transition: .4s;
+    width: auto;
+    height: auto;
+}
+
+#cardHead{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}

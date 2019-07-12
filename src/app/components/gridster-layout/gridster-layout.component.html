@@ -1,0 +1,89 @@
+<div class='toolbar'>
+  <h1>Customizable Dashboard</h1>
+
+</div>
+<div>
+  <button id='toggleButton' type="button" class="btn" (click)="editDashboard()">
+    <div *ngIf="!clicked; else elseImage">
+      Edit Dashboard
+    </div>
+    <ng-template #elseImage>
+      Save Dashboard
+    </ng-template>
+  </button>
+</div>
+<gridster [options]="options" id='gridster'>
+  <div *ngFor="let item of dashboard">
+    <gridster-item [item]="item" *ngIf='item.display;'>
+      <!-- your content here-->
+      <div id='cardHead' style="text-align: center; -ms-text-size-adjust: 2%; align-content: center;">
+        <h5>{{item.label}}</h5>
+        <div class="item-buttons" *ngIf="clicked">
+          <button class="btn" (click)=" unDisplayItem($event, item)"
+            style="height: 30px;position: absolute; right: 0;">
+            <img id='deleteicon' src="/assets/images/delete.png" height="20px">
+
+          </button>
+        </div>
+      </div>
+      <div style="justify-content: center; height: 100%; width: 100%">
+        <ng-container [ngTemplateOutlet]="templates[item.selector]"></ng-container>
+      </div>
+    </gridster-item>
+  </div>
+
+</gridster>
+<app-card-demo></app-card-demo>
+
+<ng-template #Map>
+  <div class='card'>
+    <p>
+      I am a Map.
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #Date>
+  <div class='card'>
+    <p>
+      I am a Date.
+    </p>
+  </div>
+</ng-template>
+<ng-template #AverageResponse>
+  <div class='card'>
+    <p>
+      I am a Average Response.
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #TotalResponse>
+  <div class='card'>
+    <p>
+      I am a Total Response.
+    </p>
+  </div>
+</ng-template>
+<ng-template #TotalRequest>
+  <div class='card'>
+    <p>
+      I am Total Request.
+    </p>
+  </div>
+</ng-template>
+<ng-template #Health>
+  <div class='card'>
+    <p>
+      I am a Health Card.
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #TotalError>
+  <div class='card'>
+    <p>
+      I am a Error Card.
+    </p>
+  </div>
+</ng-template>
