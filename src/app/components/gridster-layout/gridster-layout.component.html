@@ -13,12 +13,12 @@
   </button>
 </div>
 <gridster [options]="options" id='gridster'>
-  <div *ngFor="let item of dashboard">
+  <div *ngFor="let item of dashboardItems">
     <gridster-item [item]="item" *ngIf='item.display;'>
       <!-- your content here-->
       <div id='cardHead' style="text-align: center; -ms-text-size-adjust: 2%; align-content: center;">
         <h5>{{item.label}}</h5>
-        <div class="item-buttons" *ngIf="clicked">
+        <!-- <div class="item-buttons" *ngIf="clicked">
           <button class="btn" (click)=" unDisplayItem($event, item)"
             style="height: 30px;position: absolute; right: 0;">
             <img id='deleteicon' src="/assets/images/delete.png" height="20px">
@@ -27,8 +27,8 @@
         </div>
       </div>
       <div style="justify-content: center; height: 100%; width: 100%">
-        <ng-container [ngTemplateOutlet]="templates[item.selector]"></ng-container>
-      </div>
+        <ng-container [ngTemplateOutlet]="templates[item.selector]"></ng-container>-->
+      </div> 
     </gridster-item>
   </div>
 

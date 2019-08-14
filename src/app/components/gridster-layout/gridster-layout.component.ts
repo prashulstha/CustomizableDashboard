@@ -22,7 +22,7 @@ export class GridsterLayoutComponent implements OnInit {
   public templates = [];
   
   options: GridsterConfig;
-  dashboard: Array<GridsterItem>;
+  dashboardItems: Array<GridsterItem>;
   clicked: boolean = false;
 
   constructor(private gridItemService: GridsterLayoutService, private cdRef : ChangeDetectorRef) { }
@@ -39,21 +39,30 @@ export class GridsterLayoutComponent implements OnInit {
   ngOnInit() {
     this.options = this.gridItemService.options;
 
-    this.dashboard = this.gridItemService.dashboard;
+     this.dashboardItems = this.gridItemService.dashboard;
+     console.log(this.dashboardItems);
+    // this.dashboardItems = [
+    //   {cols: 5, rows: 5, y: 0, x: 0, selector: 1, label: 'Date', display: true},
+    //   {cols: 5, rows: 5, y: 0, x: 6, selector: 2,label: 'Health', display: true},
+    //   {cols: 5, rows: 5, y: 0, x: 12, selector: 3, label: 'Average Response', display: true},
+    //   {cols: 6, rows: 5, y: 5, x: 0, selector: 4,label: "Total Response", display: true},
+    //   {cols: 6, rows: 5, y: 5, x: 6, selector: 5, label: "Total Result", display: true},
+    //   {cols: 6, rows: 5, y: 5, x: 12, selector: 6, label: "Total Errors", display: true},
+    //      ];
+    
 
   }
 //Toggle bewteen Edit Mode and Save Mode
 editDashboard(): void{
   let button = document.getElementById('toggleButton');
   let gridBackground = document.getElementById('gridster');
-  let color = gridBackground.style.backgroundColor;
 
   if (!this.clicked) {
     this.clicked = true; 
 
     //Change the Color of Button and Background to Edit 
     button.style.backgroundColor = "#ff5678";
-    gridBackground.style.backgroundColor = '#E6E6E6';
+    gridBackground.style.backgroundColor = '#343a40';
     
     //Change the Options Configuration for entring Edit Mode
     this.gridItemService.startGridDragResize();
@@ -66,10 +75,10 @@ editDashboard(): void{
     
     //Change the Color of Button and Background to default 
     button.style.backgroundColor = null;
-    gridBackground.style.backgroundColor = color;
+    gridBackground.style.backgroundColor = null;
     //Change the Options Configuration for entring Edit Mode
     this.gridItemService.stopGridDragResize();
-    this.gridItemService.saveItems(this.dashboard);
+    this.gridItemService.saveItems(this.dashboardItems);
     this.changedOptions();
   }
   }
